@@ -341,7 +341,10 @@ const Chat = () => {
                         abortFuncs.current = abortFuncs.current.filter(a => a !== abortController);
                         return;
                     }
-                    resultConversation.messages.push(toolMessage, assistantMessage)
+                    if(toolMessage.role){
+                        resultConversation.messages.push(toolMessage)
+                    }
+                    resultConversation.messages.push(assistantMessage)
                 }else{
                     resultConversation = {
                         id: result.history_metadata.conversation_id,
@@ -349,7 +352,10 @@ const Chat = () => {
                         messages: [userMessage],
                         date: result.history_metadata.date
                     }
-                    resultConversation.messages.push(toolMessage, assistantMessage)
+                    if(toolMessage.role){
+                        resultConversation.messages.push(toolMessage)
+                    }
+                    resultConversation.messages.push(assistantMessage)
                 }
                 if(!resultConversation){
                     setIsLoading(false);
