@@ -25,6 +25,15 @@ def index():
 def favicon():
     return app.send_static_file('favicon.ico')
 
+@app.route('/config')
+def get_config():
+    config = {
+        'app_title': APP_TITLE,
+        'app_header_title': APP_HEADER_TITLE,
+        'app_header_logo_url': APP_HEADER_LOGO_URL
+    }
+    return jsonify(config)
+
 @app.route("/assets/<path:path>")
 def assets(path):
     return send_from_directory("static/assets", path)
@@ -37,6 +46,8 @@ if DEBUG_LOGGING:
 
 # Application Frontend Settings
 APP_TITLE = os.environ.get("APP_TITLE", "Azure AI")
+APP_HEADER_TITLE = os.environ.get("APP_HEADER_TITLE", "Azure AI")
+APP_HEADER_LOGO_URL = os.environ.get("APP_HEADER_LOGO_URL", "/assets/Azure-30d5e7c0.svg")
 
 # On Your Data Settings
 DATASOURCE_TYPE = os.environ.get("DATASOURCE_TYPE", "AzureCognitiveSearch")
