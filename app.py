@@ -35,6 +35,9 @@ DEBUG_LOGGING = DEBUG.lower() == "true"
 if DEBUG_LOGGING:
     logging.basicConfig(level=logging.DEBUG)
 
+# Application Frontend Settings
+APP_TITLE = os.environ.get("APP_TITLE", "Azure AI")
+
 # On Your Data Settings
 DATASOURCE_TYPE = os.environ.get("DATASOURCE_TYPE", "AzureCognitiveSearch")
 SEARCH_TOP_K = os.environ.get("SEARCH_TOP_K", 5)
