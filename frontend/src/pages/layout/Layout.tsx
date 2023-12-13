@@ -6,7 +6,9 @@ import { CommandBarButton, Dialog, Stack, TextField, ICommandBarStyles, IButtonS
 import { useContext, useEffect, useState } from "react";
 import { HistoryButton, ShareButton } from "../../components/common/Button";
 import { AppStateContext } from "../../state/AppProvider";
-import { CosmosDBStatus } from "../../api";
+import { Config, CosmosDBStatus } from "../../api";
+import { getConfig } from "../../api";
+
 
 const shareButtonStyles: ICommandBarStyles & IButtonStyles = {
     root: {
@@ -38,6 +40,7 @@ const Layout = () => {
     const [copyClicked, setCopyClicked] = useState<boolean>(false);
     const [copyText, setCopyText] = useState<string>("Copy URL");
     const appStateContext = useContext(AppStateContext)
+    const [config, setConfig] = useState<Config>();
 
     const handleShareClick = () => {
         setIsSharePanelOpen(true);
@@ -65,6 +68,16 @@ const Layout = () => {
     }, [copyClicked]);
 
     useEffect(() => {}, [appStateContext?.state.isCosmosDBAvailable.status]);
+    useEffect(() => {
+        const fetchConfig = async () => {
+            const data = await getConfig();
+            setConfig(data);
+        }
+
+        fetchConfig()
+        .catch(console.error);
+
+    }, []);
 
     return (
         <div className={styles.layout}>
@@ -79,7 +92,7 @@ const Layout = () => {
                             aria-hidden="true"
                         />
                         <Link to="/" className={styles.headerTitleContainer}>
-                            <h1 className={styles.headerTitle}>Azure AI</h1>
+                            <h1 className={styles.headerTitle}>{config?.app_title}</h1>
                         </Link>
                     </Stack>
                     <Stack horizontal tokens={{ childrenGap: 4 }}>

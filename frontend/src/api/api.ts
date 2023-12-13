@@ -1,4 +1,4 @@
-import { UserInfo, ConversationRequest, Conversation, ChatMessage, CosmosDBHealth, CosmosDBStatus } from "./models";
+import { UserInfo, ConversationRequest, Conversation, ChatMessage, CosmosDBHealth, CosmosDBStatus, Config } from "./models";
 import { chatHistorySampleData } from "../constants/chatHistory";
 
 export async function conversationApi(options: ConversationRequest, abortSignal: AbortSignal): Promise<Response> {
@@ -297,3 +297,27 @@ export const historyEnsure = async (): Promise<CosmosDBHealth> => {
     return response;
 }
 
+
+export const getConfig = async (): Promise<Config> => {
+    const response = await fetch(`/config`, {
+        method: "GET",
+    }).then(async (res) => {
+        const configRes = await res.json();
+
+        const config: Config = {
+            app_title: configRes.app_title,
+            app_header_title: configRes.app_header_title,
+            app_header_logo_url: configRes.app_header_logo_url
+        };
+        return config;
+    }).catch((err) => {
+        console.error("There was an issue fetching your data.");
+        const errConfig: Config = {
+            app_title: "",
+            app_header_title: "",
+            app_header_logo_url: ""
+        }
+        return errConfig;
+    })
+    return response
+}

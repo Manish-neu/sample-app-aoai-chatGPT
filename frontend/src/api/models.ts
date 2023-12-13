@@ -93,3 +93,9 @@ export type ErrorMessage = {
     title: string,
     subtitle: string
 }
+
+export type Config = {
+    app_title: string,
+    app_header_title: string,
+    app_header_logo_url: string
+}
