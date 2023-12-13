@@ -303,7 +303,6 @@ export const getConfig = async (): Promise<Config> => {
         method: "GET",
     }).then(async (res) => {
         const configRes = await res.json();
-
         const config: Config = {
             app_title: configRes.app_title,
             app_header_title: configRes.app_header_title,
