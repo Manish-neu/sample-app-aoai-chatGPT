@@ -1,14 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
 import styles from "./Layout.module.css";
 import Azure from "../../assets/Azure.svg";
+import Captech from "../../assets/CapTech_Logo_RGB_CapTech Blue.svg"
 import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
 import { CommandBarButton, Dialog, Stack, TextField, ICommandBarStyles, IButtonStyles, DefaultButton  } from "@fluentui/react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, lazy } from "react";
 import { HistoryButton, ShareButton } from "../../components/common/Button";
 import { AppStateContext } from "../../state/AppProvider";
 import { Config, CosmosDBStatus } from "../../api";
 import { getConfig } from "../../api";
-
 
 const shareButtonStyles: ICommandBarStyles & IButtonStyles = {
     root: {
@@ -87,12 +87,12 @@ const Layout = () => {
                 >
                     <Stack horizontal verticalAlign="center">
                         <img
-                            src={Azure}
+                            src={config?.company_app_header_logo_url}
                             className={styles.headerIcon}
                             aria-hidden="true"
                         />
                         <Link to="/" className={styles.headerTitleContainer}>
-                            <h1 className={styles.headerTitle}>{config?.app_title}</h1>
+                            <h1 className={styles.headerTitle}>{config?.app_header_title}</h1>
                         </Link>
                     </Stack>
                     <Stack horizontal tokens={{ childrenGap: 4 }}>

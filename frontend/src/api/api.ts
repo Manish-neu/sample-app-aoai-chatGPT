@@ -306,7 +306,7 @@ export const getConfig = async (): Promise<Config> => {
         const config: Config = {
             app_title: configRes.app_title,
             app_header_title: configRes.app_header_title,
-            app_header_logo_url: configRes.app_header_logo_url
+            company_app_header_logo_url: configRes.company_app_header_logo_url
         };
         return config;
     }).catch((err) => {
@@ -314,7 +314,7 @@ export const getConfig = async (): Promise<Config> => {
         const errConfig: Config = {
             app_title: "",
             app_header_title: "",
-            app_header_logo_url: ""
+            company_app_header_logo_url: ""
         }
         return errConfig;
     })

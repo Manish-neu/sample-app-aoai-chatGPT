@@ -30,7 +30,7 @@ def get_config():
     config = {
         'app_title': APP_TITLE,
         'app_header_title': APP_HEADER_TITLE,
-        'app_header_logo_url': APP_HEADER_LOGO_URL
+        'company_app_header_logo_url': COMPANY_APP_HEADER_LOGO_URL
     }
     return jsonify(config)
 
@@ -48,6 +48,8 @@ if DEBUG_LOGGING:
 APP_TITLE = os.environ.get("APP_TITLE", "Azure AI")
 APP_HEADER_TITLE = os.environ.get("APP_HEADER_TITLE", "Azure AI")
 APP_HEADER_LOGO_URL = os.environ.get("APP_HEADER_LOGO_URL", "/assets/Azure-30d5e7c0.svg")
+COMPANY_APP_HEADER_LOGO_URL=os.environ.get("COMPANY_APP_HEADER_LOGO_URL", "/static/company-image.svg")
+
 
 # On Your Data Settings
 DATASOURCE_TYPE = os.environ.get("DATASOURCE_TYPE", "AzureCognitiveSearch")

@@ -97,5 +97,5 @@ export type ErrorMessage = {
 export type Config = {
     app_title: string,
     app_header_title: string,
-    app_header_logo_url: string
+    company_app_header_logo_url: string
 }
