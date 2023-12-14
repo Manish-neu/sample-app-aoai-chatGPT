@@ -1,10 +1,9 @@
 import { Outlet, Link } from "react-router-dom";
 import styles from "./Layout.module.css";
 import Azure from "../../assets/Azure.svg";
-import Captech from "../../assets/CapTech_Logo_RGB_CapTech Blue.svg"
 import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
 import { CommandBarButton, Dialog, Stack, TextField, ICommandBarStyles, IButtonStyles, DefaultButton  } from "@fluentui/react";
-import { useContext, useEffect, useState, lazy } from "react";
+import { useContext, useEffect, useState} from "react";
 import { HistoryButton, ShareButton } from "../../components/common/Button";
 import { AppStateContext } from "../../state/AppProvider";
 import { Config, CosmosDBStatus } from "../../api";
