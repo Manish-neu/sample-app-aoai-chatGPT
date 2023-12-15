@@ -70,7 +70,8 @@ const Layout = () => {
     useEffect(() => {
         const fetchConfig = async () => {
             const data = await getConfig();
-            setConfig(data);
+            setConfig(data)
+            document.title = data.app_title;
         }
 
         fetchConfig()
