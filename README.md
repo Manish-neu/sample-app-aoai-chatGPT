@@ -171,6 +171,23 @@ We recommend keeping these best practices in mind:
 - When you rotate API keys for your AOAI or ACS resource, be sure to update the app settings for each of your deployed apps to use the new key.
 - Pull in changes from `main` frequently to ensure you have the latest bug fixes and improvements, especially when using Azure OpenAI on your data.
 
+
+## Automated Branding
+To automate the process of common customization scenarios, without users having to touch the code.
+
+### Adding environment variables
+1. Add the environment variables listed in `app.py` as described in the [Environment variables](#environment-variables) section.
+2. Add the additional environment variables listed below:
+| App Setting | Value | Note |
+| --- | --- | ------------- |
+|APP_TITLE||The name of the desired app title corresponding to your company; this will be on the browser tab|
+|APP_HEADER_TITLE||The name of the desired header title|
+|APP_HEADER_LOGO_URL|| /static/<company-image-name>.svg |
+
+### Adding the company logo
+1. Add the company logo to `frontend/public` and make sure the name matches the name specified in APP_HEADER_LOGO_URL in the step above.
+
+
 ## Environment variables
 
 Note: settings starting with `AZURE_SEARCH` are only needed when using Azure OpenAI on your data. If not connecting to your data, you only need to specify `AZURE_OPENAI` settings.
